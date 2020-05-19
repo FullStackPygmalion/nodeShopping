@@ -1,0 +1,34 @@
+Folder by Feature
+
+shoppingNode
+├── api
+│    ├── helloWorld
+│    │    ├── helloWorld.controller.js
+│    │    └── index.js
+│    ├── product
+│    │    ├── product.controller.js
+│    │    ├── product.model.js
+│    │    └── index.js
+│    └── user
+│         ├── user.controller.js
+│         ├── user.model.js
+│         └── index.js
+├── auth
+│    ├── facebook
+│    ├── google
+│    ├── local
+│    │    ├── passport.js
+│    │    └── index.js
+│    ├── auth.service.js
+│    └── index.js
+├── config
+│    ├── environment
+│    │    ├── development.js
+│    │    ├── production.js
+│    │    ├── shared.js
+│    │    └── index.js
+│    ├── express.js
+│    └── local.env.js
+├── app.js
+├── routes.js
+└── index.js
