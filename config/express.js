@@ -11,6 +11,7 @@ module.exports = (app) => {
 
 app.use(compression())
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json({ limit: '50mb' }))
 app.use(methodOverride())
 
 if (env === 'development' || env === 'test') app.use(errorHandler())
