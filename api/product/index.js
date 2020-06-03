@@ -5,7 +5,10 @@ const controller = require('./product.controller')
 const router = new Router()
 
 router.post('/', controller.create)
-router.get('/', controller.index)
-router.get('/:id', controller.show)
+router.get('/', controller.showAll)
+router.get('/:id', controller.showSingle)
+router.put('/:id', controller.update)
+router.delete('/:id', controller.deleteProduct)
+
 
 module.exports = router

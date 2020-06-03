@@ -9,18 +9,30 @@ function create(req, res) {
     .catch(handleError(res))
 }
 
-function index(req, res) {
+function showAll(req, res) {
   return Product.find().exec()
     .then(respondWithResult(res))
     .catch(handleError(res))
 }
 
-function show(req, res){
-  console.log(req)
+function showSingle(req, res) {
   return Product.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res, 200))
     .catch(handleError(res))
+}
+
+function update(req, res) {
+  return Product.findOneAndUpdate(req.params.id, req.body, { new: true }).exec()
+    .then(respondWithResult(res))
+    .catch(handleError)
+}
+
+function deleteProduct(req, res) {
+  return Product.findOneAndRemove(req.params.id)
+    .then(handleEntityNotFound(res))
+    .then(respondWithResult(res))
+    .then(handleError(res))
 }
 
 function respondWithResult(res, code) {
@@ -32,9 +44,9 @@ function respondWithResult(res, code) {
   }
 }
 
-function handleEntityNotFound(res){
+function handleEntityNotFound(res) {
   return (entity) => {
-    if(!entity) {
+    if (!entity) {
       res.status(404).end()
       return null
     }
@@ -51,6 +63,8 @@ function handleError(res, code) {
 
 module.exports = {
   create,
-  index,
-  show
+  showAll,
+  showSingle,
+  update,
+  deleteProduct
 }
